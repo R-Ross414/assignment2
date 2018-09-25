@@ -27,7 +27,40 @@ char Sim::Prompt(char userEntry)
 }
 */
 
-/*Sim::UserFile()
+void Sim::UserFileEntry(string fileName)
 {
+  //This is for inputting the name of a file and opening it
+  string inputFileName;
+  ifstream gridFile;
+  cout << "Enter the name of the file" << endl;
+  cin >> inputFileName;
+  gridFile.open(inputFileName, ios::in);
 
-} */
+  //the file object will read in the first 2 lines as height and width of the game board
+  int height;
+  int width;
+  gridFile >> height;
+  gridFile >> width;
+
+  if (gridFile.is_open())
+  {
+    cout << "Processing file" << endl;
+    cout << "Printing height and width" << endl;
+    cout << height << endl;
+    cout << width << endl;
+  }
+
+  string line = "";
+  while (getline(gridFile, line))
+  {
+    cout << line << endl;
+  }
+}
+
+
+
+void Sim::InvalidInput()
+{
+  cout << "Invalid input" << endl;
+  exit(0);
+}

@@ -15,40 +15,31 @@ int main()
 
   /////////////////////////////////////////////////////////////////////////////
   //////////////////////****PROMPTING USER****/////////////////////////////////
-  //variables needed for file processing and prompting user
-
-  /*char choice;
-  string inputFileName;
-  ifstream gridFile;
-
   //prompt user to ask if they want to insert file or generate random
 
-  cout << "Would you like to use a random file or your own?" << endl;
-  cout << "Enter 'R' for random and 'F' for your own" << endl;
-  cin >> choice; */
+  Sim* Sim1;
+  char input;
+  char choice;
+  choice = Sim1->Prompt(input);
 
-//variable for what the user will enter
-  char*  userEntry;
-  userEntry.Prompt(userEntry);
-
-
-  //if generate random
+  //////////////////////if the user chose to generate random///////////////////////
   if (choice == 'R')
   {
     cout << "Generating random grid configuration..." << endl;
   }
-  //if read in file
+  ///////////////////////if user chose to read in file//////////////////////////
   else if (choice == 'F') ////
   {
-    ///////cout << "Your file" << endl;
+    string fileName;
+    Sim* Sim2;
+    Sim2->UserFileEntry(fileName);
+    ////////////////////////////////////////////////////////
+    /*
+    string inputFileName; //variable for file name
+    ifstream gridFile; //ifstream object for file content
     cout << "Enter the name of the file" << endl;
     cin >> inputFileName;
     gridFile.open(inputFileName, ios::in);
-
-    if (gridFile)
-    {
-      cout << "Processing file..." << endl;
-    }
 
     ////////////////////////////////////
     int height;
@@ -56,9 +47,39 @@ int main()
     gridFile >> height;
     gridFile >> width;
     //boardFile[height][width];
-    char** boardArray = new char*[height];
+    //char** boardArray = new char*[height];
 
-    for (int i = 0; i<height; i++)
+    if (gridFile.is_open())
+    {
+      cout << "Processing file..." << endl;
+      cout << "Printing height and width" << endl;
+      cout << height << endl;
+      cout << width << endl;
+    }
+    string line = "";
+    while (getline(gridFile, line))
+    {
+      cout << line << endl;
+    } */
+
+    char** boardArray = new char*[height];
+    Grid* Grid1 = new Grid(height, width);
+
+    for (int i = 0; i< height; i++)
+    {
+      boardArray[i] = new char[width];
+      for (int j = 0; j<width; j++)
+      {
+        boardArray[i][j] = '-';
+      }
+    } 
+
+    //boardArray[4][5] = 'X';
+    //Base1->Copy(boardArray);
+    //Grid1->Print();
+
+///////////probably will delete this set of loops
+    /*for (int i = 0; i<height; i++)
     {
       boardArray[i] = new char[width];
       for (int j = 0; j<width; j++)
@@ -67,19 +88,6 @@ int main()
       }
     }
 
-    if (gridFile.is_open())
-    {
-      cout << "Printing height and width" << endl;
-      cout << height << endl;
-      cout << width << endl;
-    }
-
-    string line = "";
-    while (getline(gridFile, line))
-    {
-      cout << "Printing lines" << endl;
-      cout << line << endl;
-    }  /////
 
 
     for (int i = 0; i<height; i++)
@@ -90,9 +98,10 @@ int main()
         cout << boardArray[i][j];
       }
       cout << endl;
-    }
+    } */
   }
 
+/////////////////////////////if response is invalid///////////////////////////////
   else
   {
     cout << "Not a valid response" << endl;
@@ -105,13 +114,12 @@ int main()
   //testing constructor
 
   //create board arrray
-  //pick locations for 4,5 = x
 
 
-  /*int height = 10;
+/*  int height = 10;
   int width = 10;
   char** boardArray = new char*[height];
-  Base* Base1 = new Base(height, width);
+  Grid* Grid1 = new Grid(height, width);
 
   for (int i = 0; i< height; i++)
   {
@@ -124,7 +132,7 @@ int main()
 
   //boardArray[4][5] = 'X';
   //Base1->Copy(boardArray);
-  Base1->Print(); */
+  Grid1->Print();*/
   return 0;
 
 }
