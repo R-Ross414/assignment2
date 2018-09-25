@@ -16,21 +16,29 @@ int main()
   /////////////////////////////////////////////////////////////////////////////
   //////////////////////****PROMPTING USER****/////////////////////////////////
   //variables needed for file processing and prompting user
-  char choice;
+
+  /*char choice;
   string inputFileName;
   ifstream gridFile;
 
   //prompt user to ask if they want to insert file or generate random
+
   cout << "Would you like to use a random file or your own?" << endl;
   cout << "Enter 'R' for random and 'F' for your own" << endl;
-  cin >> choice;
+  cin >> choice; */
+
+//variable for what the user will enter
+  char*  userEntry;
+  userEntry.Prompt(userEntry);
+
+
   //if generate random
   if (choice == 'R')
   {
     cout << "Generating random grid configuration..." << endl;
   }
   //if read in file
-  else if (choice == 'F')
+  else if (choice == 'F') ////
   {
     ///////cout << "Your file" << endl;
     cout << "Enter the name of the file" << endl;
@@ -71,7 +79,7 @@ int main()
     {
       cout << "Printing lines" << endl;
       cout << line << endl;
-    }
+    }  /////
 
 
     for (int i = 0; i<height; i++)
@@ -83,7 +91,6 @@ int main()
       }
       cout << endl;
     }
-
   }
 
   else
@@ -99,7 +106,9 @@ int main()
 
   //create board arrray
   //pick locations for 4,5 = x
-  int height = 10;
+
+
+  /*int height = 10;
   int width = 10;
   char** boardArray = new char*[height];
   Base* Base1 = new Base(height, width);
@@ -115,7 +124,7 @@ int main()
 
   //boardArray[4][5] = 'X';
   //Base1->Copy(boardArray);
-  Base1->Print();
+  Base1->Print(); */
   return 0;
 
 }
