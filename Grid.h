@@ -17,6 +17,10 @@ public:
     void Print();
     void Copy(char** );
 
+    //this method adjusts board dimensions based on input
+    char** BoardDimensions(int height, int width);
+    char** CreateBoard(int height, int width);
+
     //variables for height and with of 2D arrray
     int height;
     int width;

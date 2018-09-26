@@ -21,42 +21,136 @@ char Sim::Prompt(char userEntry)
   return choice;
 }
 
-/*Sim::Random()
+int Sim::RandomHt()
 {
-
+  //generates random height
+  int height = (rand()%(10)+1);
+  cout << height << endl;
+  return height;
 }
-*/
 
-void Sim::UserFileEntry(string fileName)
+int Sim::RandomWidth()
 {
-  //This is for inputting the name of a file and opening it
+  //generates random wicth
+  int width = (rand()%(10)+1);
+  cout << width << endl;
+  return width;
+}
+
+string Sim::getFileName()
+{
+  //this method is only for the purpose of making a variable for file name
   string inputFileName;
-  ifstream gridFile;
   cout << "Enter the name of the file" << endl;
   cin >> inputFileName;
+  return inputFileName;
+}
+
+int Sim::UserFileWidth(string inputFileName)
+{
+  //This is for inputting the name of a file and opening it
+  ifstream gridFile;
   gridFile.open(inputFileName, ios::in);
 
-  //the file object will read in the first 2 lines as height and width of the game board
-  int height;
+  //iterate through lines to get the width
+  int line_no = 0;
+  string line = "";
+  while (line_no != 1 && getline(gridFile, line))
+  {
+    line_no++;
+  };
+
   int width;
-  gridFile >> height;
-  gridFile >> width;
+  if (line_no == 1)
+  {
+    gridFile >> width;
+  }
+
+  //the file object will read in the width of the game board
 
   if (gridFile.is_open())
   {
-    cout << "Processing file" << endl;
-    cout << "Printing height and width" << endl;
-    cout << height << endl;
+    //insert for loop to iterate throught text lines
+    cout << "Printing width" << endl;
     cout << width << endl;
   }
 
+  return width;
+}
+
+int Sim::UserFileHeight(string inputFileName)
+{
+  ifstream gridFile;
+  gridFile.open(inputFileName, ios::in);
+
+  int line_no = 0;
   string line = "";
-  while (getline(gridFile, line))
+  /*while (line_no != 0 && getline(gridFile, line))
+  {
+    line_no++;
+  }; */
+
+  int height;
+  if (line_no == 0)
+  {
+    gridFile >> height;
+  }
+
+  //the file object will read in the height of the game board
+  if (gridFile.is_open())
+  {
+    cout << "Printing height" << endl;
+    cout << height << endl;
+  }
+  return height;
+}
+
+void Sim::UserFileLines(string inputFileName)
+{
+  ifstream gridFile;
+  gridFile.open(inputFileName, ios::in);
+
+  int line_no = 0;
+  string line = "";
+  while (line_no <= 1 && getline(gridFile, line))
+  {
+    line_no++;
+  };
+
+  while (line_no > 1 && getline(gridFile, line))
   {
     cout << line << endl;
   }
 }
 
+char Sim::UserFileChar(string inputFileName)
+{
+  ifstream gridFile;
+  gridFile.open(inputFileName, ios::in);
+  char l;
+
+  //indexes through file and returns one char at a time
+  int line_no = 0;
+  string line = "";
+
+  //do not return the dimensionis of the grid
+  while (line_no < 2 && getline(gridFile, line))
+  {
+    line_no++;
+  };
+
+  //return the characters
+  while (line_no >= 2 && getline(gridFile, line))
+  {
+    for (int i = 0; i < line.size(); i++)
+    {
+      l = line[i];
+      cout << l << endl;
+    };
+  };
+
+  return l;
+}
 
 
 void Sim::InvalidInput()

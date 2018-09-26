@@ -21,7 +21,6 @@ Grid::Grid(int height, int width)
   {
     //setting grid width
     Board[i] = new char[width];
-
     //initializes empty cell for all grid locations
     for (int j = 0; j < width; j++)
     {
@@ -30,6 +29,46 @@ Grid::Grid(int height, int width)
   }
 }
 
+char** Grid::BoardDimensions(int height, int width)
+{
+  char** boardArray = new char*[height];
+  for (int i = 0; i < height; i++)
+  {
+    boardArray[i] = new char[width];
+    for (int j = 0; j<width; j++)
+    {
+      boardArray[i][j] = '-';
+    }
+  }
+  return boardArray;
+}
+
+char** Grid::CreateBoard(int height, int width)
+{
+  /*int cellX;
+  int cellY;
+  int cell; */
+  char** gameBoard; /*
+  for (int i =0; i < height; i++)
+  {
+    gameBoard[i] = new char[cellY];
+    //>> gameBoard[i];
+    for(int j = 0; j < width ; j++)
+    {
+      gameBoard[j] = new char[cellX];
+      cin >> gameBoard[j];
+    }
+  } */
+
+  return gameBoard;
+}
+
+
+void Grid::Copy(char** gameBoard)
+{
+
+  //method will be used to copy array for generations
+};
 
 //void method for printing the grid
 void  Grid::Print()
