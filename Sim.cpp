@@ -21,10 +21,22 @@ char Sim::Prompt(char userEntry)
   return choice;
 }
 
+char Sim::ChooseGameMode(char userChoice)
+  {
+    char mode;
+    cout << "Please choose a game mode." << endl;
+    cout << "Enter 'C' for classic mode." << endl;
+    cout << "Enter 'D' for donut mode." << endl;
+    cout << "Enter 'M' for mirror mode." << endl;
+    cin >> mode;
+    return mode; 
+  }
+
+
 int Sim::RandomHt()
 {
   //generates random height
-  int height = (rand()%(10)+1);
+  int height = (rand()%(20)+1);
   cout << height << endl;
   return height;
 }
@@ -32,7 +44,7 @@ int Sim::RandomHt()
 int Sim::RandomWidth()
 {
   //generates random wicth
-  int width = (rand()%(10)+1);
+  int width = (rand()%(20)+1);
   cout << width << endl;
   return width;
 }
@@ -59,7 +71,6 @@ int Sim::UserFileWidth(string inputFileName)
   {
     line_no++;
   };
-
   int width;
   if (line_no == 1)
   {
@@ -67,7 +78,6 @@ int Sim::UserFileWidth(string inputFileName)
   }
 
   //the file object will read in the width of the game board
-
   if (gridFile.is_open())
   {
     //insert for loop to iterate throught text lines
@@ -85,10 +95,6 @@ int Sim::UserFileHeight(string inputFileName)
 
   int line_no = 0;
   string line = "";
-  /*while (line_no != 0 && getline(gridFile, line))
-  {
-    line_no++;
-  }; */
 
   int height;
   if (line_no == 0)
@@ -105,51 +111,32 @@ int Sim::UserFileHeight(string inputFileName)
   return height;
 }
 
-void Sim::UserFileLines(string inputFileName)
+char** Sim::UserFileBoard(int height, int width, string inputFileName, char** gameBoard)
 {
   ifstream gridFile;
+  int line_no = 0;
   gridFile.open(inputFileName, ios::in);
 
-  int line_no = 0;
-  string line = "";
-  while (line_no <= 1 && getline(gridFile, line))
-  {
-    line_no++;
-  };
-
-  while (line_no > 1 && getline(gridFile, line))
-  {
-    cout << line << endl;
-  }
-}
-
-char Sim::UserFileChar(string inputFileName)
-{
-  ifstream gridFile;
-  gridFile.open(inputFileName, ios::in);
-  char l;
-
-  //indexes through file and returns one char at a time
-  int line_no = 0;
   string line = "";
 
-  //do not return the dimensionis of the grid
+  //skips through the first 2 lines which have the dimensions
   while (line_no < 2 && getline(gridFile, line))
   {
     line_no++;
   };
 
-  //return the characters
-  while (line_no >= 2 && getline(gridFile, line))
+  int i = 0;
+
+  while (i < height && getline(gridFile, line))
   {
-    for (int i = 0; i < line.size(); i++)
+    for (int j = 0; j < line.size(); j++)
     {
-      l = line[i];
-      cout << l << endl;
+      gameBoard[i][j] = line[j];
     };
+    i++;
   };
 
-  return l;
+  return gameBoard;
 }
 
 

@@ -8,26 +8,21 @@ public:
   //base class will be the environment for the cells
     //default constructor
     Grid();
-    //constructor needs arguments!!!
-    Grid(int height, int width);
+    //constructor to initialize the grid given dimensions
+    Grid(int height, int width, char** init);
     //destructor
     ~Grid();
 
-    //void method for printing
+    //class variable for the grid
+    char** grid;
+
+    //void method for printing the grid
     void Print();
     void Copy(char** );
-
-    //this method adjusts board dimensions based on input
-    char** BoardDimensions(int height, int width);
-    char** CreateBoard(int height, int width);
 
     //variables for height and with of 2D arrray
     int height;
     int width;
     //variable for array
-    char** Board;
-      //would be character matrix
-        //initialize in constructor and set default configuration
-
-
+    
 };

@@ -21,7 +21,8 @@ int main()
   char choice;
   choice = Sim1->Prompt(input);
 
-  //////////////////////if the user chose to generate random///////////////////////
+  /////////////////////////////////////////////////////////////////////////////
+  //////////////////////******RANDOM CONFIGURATION*******///////////////////////
   if (choice == 'R')
   {
     int height;
@@ -32,15 +33,14 @@ int main()
     width = Sim3->RandomWidth();
 
     cout << "Generating random grid configuration..." << endl;
-    char** boardArray = new char*[height];
-    Grid* Grid1 = new Grid(height, width);
-    Grid1->BoardDimensions(height, width);
-
-    Grid1->Print();
-
+    
+    //char** boardArray = new char*[height];
+    //Grid* Grid1 = new Grid(height, width, boardArray);
+    //Grid1->Print();
   }
 
-  ///////////////////////if user chose to read in file//////////////////////////
+  //////////////////////////////////////////////////////////////////////////////
+  ///////////////////****USER INPUTS FILE CONFIGURATION****/////////////////////
   else if (choice == 'F')
   {
     string fileName;
@@ -48,24 +48,24 @@ int main()
     int width;
     Sim* Sim2;
     char s;
+    Grid* Grid2;
 
     fileName = Sim2->getFileName();
     height = Sim2->UserFileHeight(fileName);
     width = Sim2->UserFileWidth(fileName);
 
     char** boardArray = new char*[height];
-    Grid* Grid1 = new Grid(height, width);
-    Grid1->BoardDimensions(height, width);
+    for (int i = 0; i <height; i++)
+    {
+      boardArray[i] = new char[width];
+      for (int j = 0; j < width; j++)
+      {
+        boardArray[i][j] = '-';
+      }
+    }
 
-    
-    s = Sim2->UserFileChar(fileName);
-    cout << s << endl;
-    //Sim2->UserFileLines(fileName);
-
-    //int cellLocation;
-    //Grid1->CreateBoard(height, width);
-    //boardArray[4][5] = 'X';
-    //Grid1->Copy(boardArray);
+    Sim2->UserFileBoard(height, width, fileName, boardArray);
+    Grid* Grid1 = new Grid(height, width, boardArray);
     Grid1->Print();
   }
 
