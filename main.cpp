@@ -33,7 +33,7 @@ int main()
     width = Sim3->RandomWidth();
 
     cout << "Generating random grid configuration..." << endl;
-    
+
     //char** boardArray = new char*[height];
     //Grid* Grid1 = new Grid(height, width, boardArray);
     //Grid1->Print();
@@ -63,13 +63,38 @@ int main()
         boardArray[i][j] = '-';
       }
     }
-
     Sim2->UserFileBoard(height, width, fileName, boardArray);
     Grid* Grid1 = new Grid(height, width, boardArray);
     Grid1->Print();
+
+    Base* Base1;
+    //Base1 = new Base(Grid1);
+    Base1 = Grid1;
   }
 
-/////////////////////////////if response is invalid///////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////****CHOOSE GAME MODE******////////////////////////////
+  Sim* Sim4;
+  char inp;
+  char mode;
+  mode = Sim4->ChooseGameMode(inp);
+
+  if (mode == 'C')
+    {
+      cout << "You have chosen classic mode" << endl;
+    }
+
+  else if (mode == 'D')
+    {
+      cout << "You have chosen donut mode" << endl;
+    }
+
+  else if (mode == 'M')
+    {
+      cout << "You have chosen miror mode" << endl;
+    }
+
+  ///////////////////////////***INVALID RESPONSE****///////////////////////////////
   else
   {
     cout << "Not a valid response" << endl;

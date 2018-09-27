@@ -1,10 +1,18 @@
 #include "Base.h"
+#include "Grid.h"
 #include <iostream>
 #include <fstream>
 
 using namespace std;
 
 //building out the base class
+
+Base::Base(Grid& board1)
+{
+  //initialize gameBoard
+  //this->base = new Grid;
+  //beginning layout will be whatever configuration was determined
+}
 
 void Base::Copy(char** boardArray)
 {
