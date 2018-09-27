@@ -1,5 +1,5 @@
 #include <iostream>
-#include "Grid.h"
+//#include "Grid.h"
 
 using namespace std;
 
@@ -13,8 +13,6 @@ public:
   void Copy(char** gameBoard);
 
   char** base;
-
-  Grid board1;
 
 }
 ;

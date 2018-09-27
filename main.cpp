@@ -1,9 +1,9 @@
 #include "Base.h"
 #include "Grid.h"
 #include "Sim.h"
-#include "Classic.h"
-#include "Donut.h"
-#include "Mirror.h"
+//#include "Classic.h"
+//#include "Donut.h"
+//#include "Mirror.h"
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -68,7 +68,7 @@ int main()
     Grid1->Print();
 
     Base* Base1;
-    //Base1 = new Base(Grid1);
+    Base1 = new Base(&Grid1);
     Base1 = Grid1;
   }
 
