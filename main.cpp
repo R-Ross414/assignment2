@@ -1,7 +1,7 @@
-#include "Base.h"
-#include "Grid.h"
+//#include "Base.h"
+//#include "Grid.h"
 #include "Sim.h"
-//#include "Classic.h"
+#include "Classic.h"
 //#include "Donut.h"
 //#include "Mirror.h"
 #include <iostream>
@@ -63,13 +63,24 @@ int main()
         boardArray[i][j] = '-';
       }
     }
-    Sim2->UserFileBoard(height, width, fileName, boardArray);
-    Grid* Grid1 = new Grid(height, width, boardArray);
-    Grid1->Print();
 
-    Base* Base1;
-    Base1 = new Base(&Grid1);
-    Base1 = Grid1;
+    Sim2->UserFileBoard(height, width, fileName, boardArray);
+    //Grid* Grid1 = new Grid(height, width, boardArray);
+  //  Grid1->Print();
+
+    int x = 0;
+    int y = 1;
+    //int n = Grid1->CheckNeighbors(x, y);
+    //cout << n << endl;
+
+    Base* Base1 = new Base();
+  //  Base1 = new Base(height, width);
+    /*Base1->Copy(boardArray);
+    Base1->grid->Print(); */
+
+    Classic* Classic1 = new Classic(height, width, boardArray);
+    Classic1->NextGen();
+    Classic1->grid->Print();
   }
 
   /////////////////////////////////////////////////////////////////////////////////

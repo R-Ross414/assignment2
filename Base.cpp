@@ -1,5 +1,4 @@
 #include "Base.h"
-#include "Grid.h"
 #include <iostream>
 #include <fstream>
 
@@ -7,22 +6,37 @@ using namespace std;
 
 //building out the base class
 
-Base::Base(Grid& board1)
+Base::Base()
 {
-  //initialize gameBoard
-  //this->base = new Grid;
-  //beginning layout will be whatever configuration was determined
+  this->height = 0;
+  this->width = 0;
+  this->grid = NULL;
 }
 
-void Base::Copy(char** boardArray)
+Base::Base(int height, int width, char** grid)
 {
-  //delete this->Base1;
+  this->height = height;
+  this->width = width;
+  this->grid = new Grid(height, width, grid);
+}
+
+Base::Base(int height, int width)
+{
+  this->height = height;
+  this->width = width;
+  this->grid = new Grid(height, width);
+}
+
+void Base::Copy(char** gameBoard)
+{
+  delete grid;
+  grid = NULL;
+  grid = new Grid(height, width, gameBoard);
   //Base1 = boardArray;
   //set old board = new board
 }
 
-/*Base::CheckNeighbors(int x, int y)
+/*void Base::NextGen()
 {
 
-  return numAlive;
 } */

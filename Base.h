@@ -1,5 +1,5 @@
 #include <iostream>
-//#include "Grid.h"
+#include "Grid.h"
 
 using namespace std;
 
@@ -7,12 +7,17 @@ class Base
 {
 public:
 
-  Base(Grid& board1);
+  Base();
+  Base(int height, int width, char** grid);
+  Base(int height, int width);
   ~Base();
 
   void Copy(char** gameBoard);
+  //void NextGen();
 
-  char** base;
+  Grid* grid;
+  int height;
+  int width;
 
 }
 ;
