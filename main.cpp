@@ -54,11 +54,11 @@ int main()
     height = Sim2->UserFileHeight(fileName);
     width = Sim2->UserFileWidth(fileName);
 
-    char** boardArray = new char*[height];
-    for (int i = 0; i <height; i++)
+    char** boardArray = new char*[height + 2];
+    for (int i = 0; i <height + 2; i++)
     {
-      boardArray[i] = new char[width];
-      for (int j = 0; j < width; j++)
+      boardArray[i] = new char[width + 2];
+      for (int j = 0; j < width + 2; j++)
       {
         boardArray[i][j] = '-';
       }
@@ -68,33 +68,24 @@ int main()
     from the user file entry */
     Sim2->UserFileBoard(height, width, fileName, boardArray);
 
-    //Grid* Grid1 = new Grid(height, width, boardArray);
-  //  Grid1->Print();
-
-    int x = 0;
-    int y = 1;
-    /* int n = Grid1->CheckNeighbors(x, y);
-    cout << n << endl; */
-
     Base* Base1 = new Base();
-  //  Base1 = new Base(height, width);
-    /*Base1->Copy(boardArray);
-    Base1->grid->Print(); */
 
     Classic* Classic1 = new Classic(height, width, boardArray);
-    /*for (int i = 0; i < height; i++)
+
+    int i = 0;
+    while (i < 10)
     {
-      for (int j = 0; j < width; j++)
-      {
-        cout << Classic1->grid->CheckNeighbors(j, i) << " ";
-      }
+      Classic1->NextGen();
+      Classic1->grid->Print();
       cout << endl;
-    }*/
-    Classic1->NextGen();
-    int a = Classic1->grid->CheckNeighbors(2, 0);
-    int b = Classic1->grid->CheckNeighbors(3, 0);
-    //cout << a << " " << b << endl;
+      i++; 
+    }
+
     Classic1->grid->Print();
+    cout << endl;
+    Classic1->NextGen();
+    cout << endl;
+    //Classic1->grid->Print();
   }
 
   /////////////////////////////////////////////////////////////////////////////////

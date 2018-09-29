@@ -125,13 +125,13 @@ char** Sim::UserFileBoard(int height, int width, string inputFileName, char** ga
     line_no++;
   };
 
-  int i = 0;
+  int i = 1;
 
-  while (i < height && getline(gridFile, line))
+  while (i <= height && getline(gridFile, line))
   {
-    for (int j = 0; j < line.size(); j++)
+    for (int j = 1; j <= line.size(); j++)
     {
-      gameBoard[i][j] = line[j];
+      gameBoard[i][j] = line[j - 1];
     };
     i++;
   };

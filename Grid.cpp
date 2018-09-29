@@ -30,7 +30,7 @@ Grid::Grid(int height, int width, char** init)
   {
     for (int j = 1; j <= width; j++)
     {
-      this->grid[i][j] = init[i - 1][j - 1];
+      this->grid[i][j] = init[i][j];
     }
   }
 }

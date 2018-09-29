@@ -13,7 +13,6 @@ public:
   ~Base();
 
   void Copy(char** gameBoard);
-  //void NextGen();
 
   Grid* grid;
   int height;
