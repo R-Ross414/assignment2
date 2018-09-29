@@ -60,17 +60,12 @@ Grid::~Grid()
   width = 0;
 }
 
-/*void Grid::Copy(char** gameBoard)
-{
-  //method will be used to copy array for generations
-}; */
-
 //void method for printing the grid
 void Grid::Print()
   {
-    for (int i = 0; i <= this->height + 1; i++)
+    for (int i = 1; i <= this->height; i++)
     {
-      for (int j = 0; j <= this->width + 1; j++)
+      for (int j = 1; j <= this->width; j++)
       {
         //print out each line of elements
         cout << this->grid[i][j];
@@ -87,13 +82,11 @@ int Grid::CheckNeighbors(int x, int y)
   {
     for (int j = -1; j <= 1; j++)
     {
-      //cout << grid[y+i+1][x+j+1] << " ";
       if (grid[y + i + 1][x + j + 1] == 'X')
       {
         sum++;
       }
     }
-    //cout << endl;
   }
 
   if (grid[y + 1][x + 1] == 'X')
@@ -102,8 +95,4 @@ int Grid::CheckNeighbors(int x, int y)
   }
 
   return sum;
-  /*else
-  {
-    return sum;
-  } */
 }

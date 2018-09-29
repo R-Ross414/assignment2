@@ -35,8 +35,3 @@ void Base::Copy(char** gameBoard)
   //Base1 = boardArray;
   //set old board = new board
 }
-
-/*void Base::NextGen()
-{
-
-} */

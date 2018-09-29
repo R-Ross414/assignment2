@@ -31,8 +31,6 @@ public:
       for (int j = 1; j <= this->width; j++)
       {
         int cells = grid->CheckNeighbors(j - 1, i - 1);
-        //cout << cells << " ";
-
         //if statements to determine alive or dead next gen
         if (cells <= 1)
         {
@@ -51,13 +49,12 @@ public:
           newBoard[i][j] = '-';//cell dies
         }
       }
+    }
+    ;
 
-      //cout << endl;
-
-    };
     Grid* grid1 = new Grid(height, width, newBoard);
-    //grid1->Print();
     this->Copy(newBoard);
+
 
   };
 
