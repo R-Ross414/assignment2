@@ -26,7 +26,6 @@ public:
     }
 
     //nested for loop over the board checking neighbors
-    //int cells = 1;
     for (int i = 1; i <= this->height; i++)
     {
       for (int j = 1; j <= this->width; j++)

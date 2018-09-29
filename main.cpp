@@ -1,9 +1,9 @@
 //#include "Base.h"
 //#include "Grid.h"
 #include "Sim.h"
-#include "Classic.h"
+//#include "Classic.h"
 //#include "Donut.h"
-//#include "Mirror.h"
+#include "Mirror.h"
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -70,7 +70,7 @@ int main()
 
     Base* Base1 = new Base();
 
-    Classic* Classic1 = new Classic(height, width, boardArray);
+    /*Classic* Classic1 = new Classic(height, width, boardArray);
 
     int i = 0;
     while (i < 10)
@@ -78,14 +78,30 @@ int main()
       Classic1->NextGen();
       Classic1->grid->Print();
       cout << endl;
-      i++; 
+      i++;
     }
 
     Classic1->grid->Print();
     cout << endl;
     Classic1->NextGen();
     cout << endl;
-    //Classic1->grid->Print();
+    Classic1->grid->Print(); */
+
+    /*Donut* Donut1 = new Donut(height, width, boardArray);
+    Donut1->grid->Print();
+    cout << endl;
+    Donut1->NextGen();
+    cout << endl;
+    Donut1->grid->Print();
+    cout << endl; */
+
+    Mirror* Mirror1 = new Mirror(height, width, boardArray);
+    Mirror1->grid->Print();
+    cout << endl;
+    Mirror1->NextGen();
+    cout << endl;
+    Mirror1->grid->Print();
+    cout << endl;
   }
 
   /////////////////////////////////////////////////////////////////////////////////

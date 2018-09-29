@@ -68,9 +68,9 @@ Grid::~Grid()
 //void method for printing the grid
 void Grid::Print()
   {
-    for (int i = 1; i <= this->height; i++)
+    for (int i = 0; i <= this->height + 1; i++)
     {
-      for (int j = 1; j <= this->width; j++)
+      for (int j = 0; j <= this->width + 1; j++)
       {
         //print out each line of elements
         cout << this->grid[i][j];
