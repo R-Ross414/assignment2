@@ -64,14 +64,17 @@ int main()
       }
     }
 
+    /*Set the game board using the configuration and dimensions
+    from the user file entry */
     Sim2->UserFileBoard(height, width, fileName, boardArray);
+
     //Grid* Grid1 = new Grid(height, width, boardArray);
   //  Grid1->Print();
 
     int x = 0;
     int y = 1;
-    //int n = Grid1->CheckNeighbors(x, y);
-    //cout << n << endl;
+    /* int n = Grid1->CheckNeighbors(x, y);
+    cout << n << endl; */
 
     Base* Base1 = new Base();
   //  Base1 = new Base(height, width);
@@ -79,7 +82,18 @@ int main()
     Base1->grid->Print(); */
 
     Classic* Classic1 = new Classic(height, width, boardArray);
+    /*for (int i = 0; i < height; i++)
+    {
+      for (int j = 0; j < width; j++)
+      {
+        cout << Classic1->grid->CheckNeighbors(j, i) << " ";
+      }
+      cout << endl;
+    }*/
     Classic1->NextGen();
+    int a = Classic1->grid->CheckNeighbors(2, 0);
+    int b = Classic1->grid->CheckNeighbors(3, 0);
+    //cout << a << " " << b << endl;
     Classic1->grid->Print();
   }
 
@@ -112,5 +126,4 @@ int main()
     exit(0);
   }
   return 0;
-
 }

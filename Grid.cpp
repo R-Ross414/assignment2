@@ -87,19 +87,23 @@ int Grid::CheckNeighbors(int x, int y)
   {
     for (int j = -1; j <= 1; j++)
     {
+      //cout << grid[y+i+1][x+j+1] << " ";
       if (grid[y + i + 1][x + j + 1] == 'X')
       {
         sum++;
       }
     }
+    //cout << endl;
   }
 
   if (grid[y + 1][x + 1] == 'X')
   {
-    return sum-1;
+    sum-= 1;
   }
-  else
+
+  return sum;
+  /*else
   {
     return sum;
-  }
+  } */
 }

@@ -29,7 +29,7 @@ char Sim::ChooseGameMode(char userChoice)
     cout << "Enter 'D' for donut mode." << endl;
     cout << "Enter 'M' for mirror mode." << endl;
     cin >> mode;
-    return mode; 
+    return mode;
   }
 
 
@@ -71,20 +71,22 @@ int Sim::UserFileWidth(string inputFileName)
   {
     line_no++;
   };
+
+  //the file object will read in the width of the game board
   int width;
   if (line_no == 1)
   {
     gridFile >> width;
   }
 
-  //the file object will read in the width of the game board
+/*
   if (gridFile.is_open())
   {
     //insert for loop to iterate throught text lines
     cout << "Printing width" << endl;
     cout << width << endl;
   }
-
+*/
   return width;
 }
 
@@ -96,18 +98,16 @@ int Sim::UserFileHeight(string inputFileName)
   int line_no = 0;
   string line = "";
 
+  //the file object will read in the height of the game board
   int height;
   if (line_no == 0)
   {
     gridFile >> height;
   }
 
-  //the file object will read in the height of the game board
-  if (gridFile.is_open())
-  {
-    cout << "Printing height" << endl;
-    cout << height << endl;
-  }
+  //cout << "Printing height" << endl;
+  //cout << height << endl;
+
   return height;
 }
 
