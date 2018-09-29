@@ -75,31 +75,48 @@ int main()
     int i = 0;
     while (i < 10)
     {
+      cout << "Generation: " << i << endl;
       Classic1->NextGen();
       Classic1->grid->Print();
       cout << endl;
       i++;
     }
 
-    Classic1->grid->Print();
-    cout << endl;
+    //Classic1->grid->Print();
     Classic1->NextGen();
-    cout << endl;
+    cout << "Generation: " << i << endl;
     Classic1->grid->Print(); */
 
     /*Donut* Donut1 = new Donut(height, width, boardArray);
-    Donut1->grid->Print();
-    cout << endl;
+
+    int i = 0;
+    while (i < 10)
+    {
+      cout << "Generation: " << i << endl;
+      Donut1->NextGen();
+      Donut1->grid->Print();
+      cout << endl;
+      i++;
+    }
+
     Donut1->NextGen();
-    cout << endl;
+    cout << "Generation: " << i << endl;
     Donut1->grid->Print();
     cout << endl; */
 
     Mirror* Mirror1 = new Mirror(height, width, boardArray);
-    Mirror1->grid->Print();
-    cout << endl;
+
+    int i = 0;
+    while (i < 10)
+    {
+      Mirror1->NextGen();
+      Mirror1->grid->Print();
+      cout << endl;
+      i++;
+    }
+
     Mirror1->NextGen();
-    cout << endl;
+    cout << "Generation: " << i << endl;
     Mirror1->grid->Print();
     cout << endl;
   }
