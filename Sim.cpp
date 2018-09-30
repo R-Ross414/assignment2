@@ -8,7 +8,6 @@ using namespace std;
 //constructor
 Sim::Sim()
 {
-
 }
 
 char Sim::Prompt(char userEntry)
@@ -49,9 +48,28 @@ int Sim::RandomWidth()
   return width;
 }
 
+double Sim::InputDensity()
+{
+  double density;
+  cout << "Enter a population density as a decimal between 0 and 1" << endl;
+  cin >> density;
+  return density;
+}
+
 void Sim::RandomInit(int height, int width, double density, char** randomBoard)
 {
-  
+  int init_pop = height * width * density;
+  int num_cells;
+  char** random_board;
+
+  while(num_cells<init_pop)
+  {
+    int x = ((double) rand() / (RAND_MAX));
+    int y = ((double) rand() / (RAND_MAX));
+
+    random_board[y][x] = 'X';
+    num_cells++;
+  }
 }
 string Sim::getFileName()
 {
