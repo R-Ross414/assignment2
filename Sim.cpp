@@ -35,20 +35,24 @@ char Sim::ChooseGameMode(char userChoice)
 
 int Sim::RandomHt()
 {
-  //generates random height
-  int height = (rand()%(20)+1);
-  cout << height << endl;
+  int height;
+  cout << "Enter a height" << endl;
+  cin >> height;
   return height;
 }
 
 int Sim::RandomWidth()
 {
-  //generates random wicth
-  int width = (rand()%(20)+1);
-  cout << width << endl;
+  int width;
+  cout << "Enter a width" << endl;
+  cin >> width;
   return width;
 }
 
+void Sim::RandomInit(int height, int width, double density, char** randomBoard)
+{
+  
+}
 string Sim::getFileName()
 {
   //this method is only for the purpose of making a variable for file name
@@ -78,15 +82,6 @@ int Sim::UserFileWidth(string inputFileName)
   {
     gridFile >> width;
   }
-
-/*
-  if (gridFile.is_open())
-  {
-    //insert for loop to iterate throught text lines
-    cout << "Printing width" << endl;
-    cout << width << endl;
-  }
-*/
   return width;
 }
 
@@ -104,9 +99,6 @@ int Sim::UserFileHeight(string inputFileName)
   {
     gridFile >> height;
   }
-
-  //cout << "Printing height" << endl;
-  //cout << height << endl;
 
   return height;
 }
@@ -144,4 +136,13 @@ void Sim::InvalidInput()
 {
   cout << "Invalid input" << endl;
   exit(0);
+}
+
+char Sim::ChoosePlayMode(char playChoice)
+{
+  cout << "Choose a play mode" << endl;
+  cout << "Enter 'E' to press enter between each generation" << endl;
+  cout << "Enter 'L' for it to continue on its own" << endl;
+  cin >> playChoice;
+  return playChoice;
 }

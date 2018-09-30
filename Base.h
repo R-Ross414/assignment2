@@ -1,3 +1,4 @@
+#pragma once
 #include <iostream>
 #include "Grid.h"
 
@@ -13,6 +14,8 @@ public:
   ~Base();
 
   void Copy(char** gameBoard);
+  bool Dead();
+  bool Stable(char** newBoard);
 
   Grid* grid;
   int height;

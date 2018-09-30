@@ -35,3 +35,35 @@ void Base::Copy(char** gameBoard)
   //Base1 = boardArray;
   //set old board = new board
 }
+
+
+bool Base::Dead()
+{
+  for(int i = 1; i <= height; i++)
+  {
+    for(int j =1; j <= width; j++)
+    {
+      if (this->grid->grid[i][j] == 'X')
+      {
+        return false;
+      }
+    }
+  }
+  return true;
+}
+
+bool Base::Stable(char** newBoard)
+{
+  bool stable = true;
+  for(int i = 1; i<= height; i++)
+  {
+    for(int j = 1; j <= width; j++)
+    {
+      if (this->grid->grid[i][j] != newBoard[i][j])
+      {
+        stable = false;
+      }
+    }
+  }
+  return stable; 
+}

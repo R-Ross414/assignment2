@@ -1,17 +1,18 @@
-//#include "Base.h"
-//#include "Grid.h"
 #include "Sim.h"
-//#include "Classic.h"
-//#include "Donut.h"
+#include "Classic.h"
+#include "Donut.h"
 #include "Mirror.h"
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <cstdlib>
 
 using namespace std;
 
 int main()
 {
+  int height;
+  int width;
 
   /////////////////////////////////////////////////////////////////////////////
   //////////////////////****PROMPTING USER****/////////////////////////////////
@@ -25,8 +26,6 @@ int main()
   //////////////////////******RANDOM CONFIGURATION*******///////////////////////
   if (choice == 'R')
   {
-    int height;
-    int width;
     Sim* Sim3;
 
     height = Sim3->RandomHt();
@@ -34,9 +33,6 @@ int main()
 
     cout << "Generating random grid configuration..." << endl;
 
-    //char** boardArray = new char*[height];
-    //Grid* Grid1 = new Grid(height, width, boardArray);
-    //Grid1->Print();
   }
 
   //////////////////////////////////////////////////////////////////////////////
@@ -44,11 +40,7 @@ int main()
   else if (choice == 'F')
   {
     string fileName;
-    int height;
-    int width;
     Sim* Sim2;
-    char s;
-    Grid* Grid2;
 
     fileName = Sim2->getFileName();
     height = Sim2->UserFileHeight(fileName);
@@ -67,87 +59,50 @@ int main()
     /*Set the game board using the configuration and dimensions
     from the user file entry */
     Sim2->UserFileBoard(height, width, fileName, boardArray);
-
     Base* Base1 = new Base();
 
-    /*Classic* Classic1 = new Classic(height, width, boardArray);
+    /////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////****CHOOSE GAME MODE******////////////////////////////
+    Sim* Sim4;
+    char inp;
+    char mode;
+    mode = Sim4->ChooseGameMode(inp);
+    char x;
+    char playChoice;
+    playChoice = Sim4->ChoosePlayMode(x);
 
-    int i = 0;
-    while (i < 10)
-    {
-      cout << "Generation: " << i << endl;
-      Classic1->NextGen();
-      Classic1->grid->Print();
-      cout << endl;
-      i++;
-    }
-
-    //Classic1->grid->Print();
-    Classic1->NextGen();
-    cout << "Generation: " << i << endl;
-    Classic1->grid->Print(); */
-
-    /*Donut* Donut1 = new Donut(height, width, boardArray);
-
-    int i = 0;
-    while (i < 10)
-    {
-      cout << "Generation: " << i << endl;
-      Donut1->NextGen();
-      Donut1->grid->Print();
-      cout << endl;
-      i++;
-    }
-
-    Donut1->NextGen();
-    cout << "Generation: " << i << endl;
-    Donut1->grid->Print();
-    cout << endl; */
-
-    Mirror* Mirror1 = new Mirror(height, width, boardArray);
-
-    int i = 0;
-    while (i < 10)
-    {
-      Mirror1->NextGen();
-      Mirror1->grid->Print();
-      cout << endl;
-      i++;
-    }
-
-    Mirror1->NextGen();
-    cout << "Generation: " << i << endl;
-    Mirror1->grid->Print();
-    cout << endl;
-  }
-
-  /////////////////////////////////////////////////////////////////////////////////
-  /////////////////////////****CHOOSE GAME MODE******////////////////////////////
-  Sim* Sim4;
-  char inp;
-  char mode;
-  mode = Sim4->ChooseGameMode(inp);
-
-  if (mode == 'C')
+    if (mode == 'C')
     {
       cout << "You have chosen classic mode" << endl;
+      Classic* Classic1 = new Classic(height, width, boardArray);
+      Classic1->Play(playChoice);
     }
 
-  else if (mode == 'D')
+    else if (mode == 'D')
     {
       cout << "You have chosen donut mode" << endl;
+      Donut* Donut1 = new Donut(height, width, boardArray);
+      Donut1->Play(playChoice);
     }
 
-  else if (mode == 'M')
+    else if (mode == 'M')
     {
       cout << "You have chosen miror mode" << endl;
+      Mirror* Mirror1 = new Mirror(height, width, boardArray);
+      Mirror1->Play(playChoice);
     }
+
+    else
+    {
+      cout << "Invalid response" << endl;
+    }
+  }
 
   ///////////////////////////***INVALID RESPONSE****///////////////////////////////
   else
   {
     cout << "Not a valid response" << endl;
     exit(0);
-  }
+  };
   return 0;
 }

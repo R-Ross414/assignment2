@@ -14,7 +14,7 @@ public:
   Mirror(int height, int width) : Base(height, width) {};
   ~Mirror() {};
 
-  void NextGen()
+  bool NextGen()
   {
     //initialize board for new generation
     char** newBoard = new char*[height + 2];
@@ -54,10 +54,21 @@ public:
         }
       }
     };
-    Grid* grid1 = new Grid(height, width, newBoard);
+
+    if(this->Stable(newBoard))
+    {
+      return false;
+    }
+
     this->Copy(newBoard);
     this->Boundary();
 
+    if (this->Dead())
+    {
+      return false;
+    }
+
+    return true;
   };
 /////////////////////////////////////////////////////////////////
   void Boundary()
@@ -84,13 +95,40 @@ public:
 
     for (int j = 1; j <= width; j++)
     {
-      //this->grid->grid[0][j] = this->grid->grid[1][j];
+      if (this->grid->grid[1][j] == 'X')
+      {
+        this->grid->grid[0][j - 1] = 'X';
+        this->grid->grid[0][j] = 'X';
+        this->grid->grid[0][j + 1] = 'X';
+      }
+
     };
 
     for (int j = 1; j <= width; j++)
     {
-      //this->grid->grid[height+1][j] = this->grid->grid[height][j];
+      if (this->grid->grid[height][j] == 'X')
+      {
+        this->grid->grid[height + 1][j - 1] = 'X';
+        this->grid->grid[height + 1][j] = 'X';
+        this->grid->grid[height + 1][j + 1] = 'X';
+      }
     };
+  }
+
+  void Play(char playMode)
+  {
+    int gen = 0;
+    cout << "Generation: " << gen << endl;
+    this->grid->Print();
+    cout << endl;
+    while (this->NextGen())
+    {
+      gen++;
+      cout << "Generation: " << gen << endl;
+      this->grid->Print();
+      cout << endl;
+    }
+    this->grid->Print();
   }
 
 };

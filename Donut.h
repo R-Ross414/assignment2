@@ -14,7 +14,7 @@ public:
   Donut(int height, int width) : Base(height, width) {};
   ~Donut() {};
 
-  void NextGen()
+  bool NextGen()
   {
     //initialize board for new generation
     char** newBoard = new char*[height + 2];
@@ -55,10 +55,21 @@ public:
       }
 
     };
-    Grid* grid1 = new Grid(height, width, newBoard);
+
+    if(this->Stable(newBoard))
+    {
+      return false;
+    }
+
     this->Copy(newBoard);
     this->Boundary();
 
+    if (this->Dead())
+    {
+      return false;
+    }
+
+    return true;
   };
 
 void Boundary()
@@ -84,5 +95,20 @@ void Boundary()
   };
 }
 
+void Play(char playMode)
+{
+  int gen = 0;
+  cout << "Generation: " << gen << endl;
+  this->grid->Print();
+  cout << endl;
+  while (this->NextGen())
+  {
+    gen++;
+    cout << "Generation: " << gen << endl;
+    this->grid->Print();
+    cout << endl;
+  }
+  this->grid->Print();
+}
 }
 ;

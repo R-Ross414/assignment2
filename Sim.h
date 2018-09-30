@@ -14,10 +14,12 @@ public:
   or if they would like to input their own. ChooseGameMode is a method that will prompt the user in order to allow choice of game mode */
 char Prompt(char userEntry);
 char ChooseGameMode(char userChoice);
+char ChoosePlayMode(char playChoice);
 
-//Method #1 will generate a random height and method #2 will generate a random width
+//Method #1 will ask the user for a random height and method #2 will ask for a random width. Method #3 determines the random configuration
 int RandomHt(); //method #1
 int RandomWidth(); //method #2
+void RandomInit(int height, int width, double density, char** randomBoard);
 
 //Methods #1 and #2 will create variables for height and width based on user file data
 int UserFileWidth(string fileName); //method #1
