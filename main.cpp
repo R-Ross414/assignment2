@@ -13,6 +13,7 @@ int main()
 {
   int height;
   int width;
+  double density;
 
   /////////////////////////////////////////////////////////////////////////////
   //////////////////////****PROMPTING USER****/////////////////////////////////
@@ -30,8 +31,55 @@ int main()
 
     height = Sim3->RandomHt();
     width = Sim3->RandomWidth();
+    density = Sim3->InputDensity();
+
+    char** randomBoard = new char*[height + 2];
+    for (int i = 0; i <height + 2; i++)
+    {
+      randomBoard[i] = new char[width + 2];
+      for (int j = 0; j < width + 2; j++)
+      {
+        randomBoard[i][j] = '-';
+      }
+    }
 
     cout << "Generating random grid configuration..." << endl;
+
+    Sim3->RandomInit(height, width, density, randomBoard);
+
+    Sim* Sim4;
+    char inp;
+    char mode;
+    mode = Sim4->ChooseGameMode(inp);
+    char x;
+    char playChoice;
+    playChoice = Sim4->ChoosePlayMode(x);
+
+    if (mode == 'C')
+    {
+      cout << "You have chosen classic mode" << endl;
+      Classic* Classic1 = new Classic(height, width, randomBoard);
+      Classic1->Play(playChoice);
+    }
+
+    else if (mode == 'D')
+    {
+      cout << "You have chosen donut mode" << endl;
+      Donut* Donut1 = new Donut(height, width, randomBoard);
+      Donut1->Play(playChoice);
+    }
+
+    else if (mode == 'M')
+    {
+      cout << "You have chosen miror mode" << endl;
+      Mirror* Mirror1 = new Mirror(height, width, randomBoard);
+      Mirror1->Play(playChoice);
+    }
+
+    else
+    {
+      cout << "Invalid response" << endl;
+    }
 
   }
 
@@ -59,7 +107,7 @@ int main()
     /*Set the game board using the configuration and dimensions
     from the user file entry */
     Sim2->UserFileBoard(height, width, fileName, boardArray);
-    Base* Base1 = new Base();
+    //Base* Base1 = new Base();
 
     /////////////////////////////////////////////////////////////////////////////////
     /////////////////////////****CHOOSE GAME MODE******////////////////////////////
